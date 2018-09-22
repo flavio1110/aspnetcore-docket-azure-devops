@@ -1,16 +1,18 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# Build Docker image for this app using Azure Pipelines
+# http://docs.microsoft.com/azure/devops/pipelines/languages/docker?view=vsts
 
 pool:
   vmImage: 'Ubuntu 16.04'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+variables:
+  buildConfiguration: 'Release'
+  imageName: 'netcore-api-docker:$(Build.BuildId)'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+steps:
+  - task: DotNetCoreInstaller@0
+  inputs:
+    version: '2.1.402' # replace this value with the version that you need for your project
+
+  - script: dotnet build --configuration $(buildConfiguration)
+
+  - script: docker build -t $(imageName) .
