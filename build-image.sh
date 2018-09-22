@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t aspnetapp .
+docker build -t netcore-api-docker .
