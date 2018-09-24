@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using netcore_api_docker.Api;
+using System.Collections.Generic;
 
 namespace netcore_api_docker.Controllers
 {
@@ -12,10 +10,19 @@ namespace netcore_api_docker.Controllers
     public class ValuesController : ControllerBase
     {
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly Settings _settings;
 
-        public ValuesController(IHostingEnvironment hostingEnvironment)
+        public ValuesController(IHostingEnvironment hostingEnvironment, Settings settings)
         {
             _hostingEnvironment = hostingEnvironment;
+            _settings = settings;
+        }
+
+        [HttpGet]
+        [Route("Config")]
+        public ActionResult<Settings> GetConfig()
+        {
+            return _settings;
         }
 
         // GET api/values

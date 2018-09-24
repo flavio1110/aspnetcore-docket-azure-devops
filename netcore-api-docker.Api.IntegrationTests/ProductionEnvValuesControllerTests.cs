@@ -6,12 +6,12 @@ using Xunit;
 
 namespace netcore_api_docker.Api.IntegrationTests
 {
-    public class ValuesControllerTestsWithFactory : IClassFixture<ProductionWebApplicationFactory<Startup>>
+    public class ProductionEnvValuesControllerTests : IClassFixture<ProductionWebApplicationFactory<Startup>>
     {
         private readonly WebApplicationFactory<Startup> _factory;
         private readonly HttpClient _client;
 
-        public ValuesControllerTestsWithFactory(ProductionWebApplicationFactory<Startup> factory)
+        public ProductionEnvValuesControllerTests(ProductionWebApplicationFactory<Startup> factory)
         {
             _factory = factory;
             _client = factory.CreateClient();
