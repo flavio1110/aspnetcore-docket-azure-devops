@@ -9,13 +9,13 @@ variables:
   imageName: 'netcore-api-docker:$(Build.BuildId)'
 
 steps:
-  - task: Install net core 
+  - task: DotNetCoreInstaller@0
     inputs:
       version: '2.1.402'
 
   - script: dotnet build --configuration $(buildConfiguration)
 
-  - task: Tests
+  - task: DotNetCoreCLI@2
     inputs:
       command: test
       projects: '**/*Tests/*.csproj'
