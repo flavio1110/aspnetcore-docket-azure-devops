@@ -3,11 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netcore-api-docker.Api", "netcore-api-docker.Api\netcore-api-docker.Api.csproj", "{A83660F3-061C-4279-9988-E81F7B2B93D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "netcore-api-docker.Api", "netcore-api-docker.Api\netcore-api-docker.Api.csproj", "{A83660F3-061C-4279-9988-E81F7B2B93D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netcore-api-docker.Api.UnitTests", "netcore-api-docker.Api.UnitTests\netcore-api-docker.Api.UnitTests.csproj", "{96B4F227-C52F-4B70-A9F5-F1A2767D3F5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "netcore-api-docker.Api.UnitTests", "netcore-api-docker.Api.UnitTests\netcore-api-docker.Api.UnitTests.csproj", "{96B4F227-C52F-4B70-A9F5-F1A2767D3F5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netcore-api-docker.Api.IntegrationTests", "netcore-api-docker.Api.IntegrationTests\netcore-api-docker.Api.IntegrationTests.csproj", "{F9FB158A-73F5-4BC8-A721-45DB1865AED9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "netcore-api-docker.Api.IntegrationTests", "netcore-api-docker.Api.IntegrationTests\netcore-api-docker.Api.IntegrationTests.csproj", "{F9FB158A-73F5-4BC8-A721-45DB1865AED9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{313DB2EC-501F-4DB4-9FB1-D899067E0B27}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		azure-pipelines.yml = azure-pipelines.yml
+		build-image.sh = build-image.sh
+		README.md = README.md
+		run-image-dev.sh = run-image-dev.sh
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +26,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A83660F3-061C-4279-9988-E81F7B2B93D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -58,5 +64,11 @@ Global
 		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Release|x64.Build.0 = Release|Any CPU
 		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Release|x86.ActiveCfg = Release|Any CPU
 		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1819DADD-8A1A-4DD2-A2D0-67E8E5434C7A}
 	EndGlobalSection
 EndGlobal

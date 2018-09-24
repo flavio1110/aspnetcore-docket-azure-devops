@@ -31,7 +31,6 @@ namespace netcore_api_docker.Api.IntegrationTests
  
             response.EnsureSuccessStatusCode();
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-
         }
     }
 }

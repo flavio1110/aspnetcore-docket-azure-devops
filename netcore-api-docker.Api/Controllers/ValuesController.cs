@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace netcore_api_docker.Controllers
@@ -10,6 +11,13 @@ namespace netcore_api_docker.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IHostingEnvironment _hostingEnvironment;
+
+        public ValuesController(IHostingEnvironment hostingEnvironment)
+        {
+            _hostingEnvironment = hostingEnvironment;
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
@@ -21,6 +29,9 @@ namespace netcore_api_docker.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
+            if (_hostingEnvironment.EnvironmentName != "Production")
+                return BadRequest();
+
             return "value";
         }
 
