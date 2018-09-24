@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netcore-api-docker.Api", "n
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netcore-api-docker.Api.UnitTests", "netcore-api-docker.Api.UnitTests\netcore-api-docker.Api.UnitTests.csproj", "{96B4F227-C52F-4B70-A9F5-F1A2767D3F5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netcore-api-docker.Api.IntegrationTests", "netcore-api-docker.Api.IntegrationTests\netcore-api-docker.Api.IntegrationTests.csproj", "{F9FB158A-73F5-4BC8-A721-45DB1865AED9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{96B4F227-C52F-4B70-A9F5-F1A2767D3F5A}.Release|x64.Build.0 = Release|Any CPU
 		{96B4F227-C52F-4B70-A9F5-F1A2767D3F5A}.Release|x86.ActiveCfg = Release|Any CPU
 		{96B4F227-C52F-4B70-A9F5-F1A2767D3F5A}.Release|x86.Build.0 = Release|Any CPU
+		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Debug|x64.Build.0 = Debug|Any CPU
+		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Debug|x86.Build.0 = Debug|Any CPU
+		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Release|x64.ActiveCfg = Release|Any CPU
+		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Release|x64.Build.0 = Release|Any CPU
+		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Release|x86.ActiveCfg = Release|Any CPU
+		{F9FB158A-73F5-4BC8-A721-45DB1865AED9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
