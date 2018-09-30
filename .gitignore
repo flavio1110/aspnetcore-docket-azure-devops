@@ -9,3 +9,4 @@ coverage/
 *.user
 *.info
 coverage.json
+coverage.cobertura.xml
