@@ -22,10 +22,10 @@ steps:
       arguments: '--configuration $(buildConfiguration)'
 
   - script: |
+      mkdir $(Build.SourcesDirectory)\coverage
       cd netcore-api-docker.Api.UnitTests
-      coverlet ./bin/Debug/netcoreapp2.1/netcore-api-docker-Api.UnitTests.dll --target "dotnet" --targetargs "test --no-build" --output ../coverage.json
-      cd ..
-      cd netcore-api-docker.Api.IntegrationTests
-      coverlet ./bin/Debug/netcoreapp2.1/netcore-api-docker-Api.IntegrationTests.dll --target "dotnet" --targetargs "test --no-build" --merge-with ../coverage.json
+      dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)\coverage\results.json
+      cd ../netcore-api-docker.Api.IntegrationTests
+      dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:p:MergeWith=$(Build.SourcesDirectory)\coverage\results.json
 
   #- script: docker build -t $(imageName) ./netcore-api-docker.Api
