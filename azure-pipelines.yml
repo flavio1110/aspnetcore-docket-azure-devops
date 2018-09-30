@@ -12,13 +12,32 @@ steps:
   - task: DotNetCoreInstaller@0
     inputs:
       version: '2.1.402'
+    displayName: Install .net core 2.1.402
 
   - script: dotnet build --configuration $(buildConfiguration)
+    displayName: 'Build $(buildConfiguration) # $(Build.BuildId)'
 
-  - task: DotNetCoreCLI@2
+  - script: |
+      mkdir $(Build.SourcesDirectory)/coverage
+      mkdir $(Build.SourcesDirectory)/results
+      dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutput=$(Build.SourcesDirectory)/coverage/results.json netcore-api-docker.Api.UnitTests
+      dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:MergeWith=$(Build.SourcesDirectory)/coverage/results.json /p:CoverletOutput=$(Build.SourcesDirectory)/coverage/cobertura-results.xml netcore-api-docker.Api.IntegrationTests
+      dotnet tool install dotnet-reportgenerator-globaltool --version 4.0.0-rc6 --tool-path . 
+      ./reportgenerator "-reports:$(Build.SourcesDirectory)/coverage/cobertura-results.xml" "-targetdir:$(Build.SourcesDirectory)/results" "-reporttypes:HTMLInline;HTMLChart"
+    displayName: 'Tests'
+
+  - task: PublishTestResults@2
     inputs:
-      command: test
-      projects: '**/*Tests/*.csproj'
-      arguments: '--configuration $(buildConfiguration)'
+      testRunner: VSTest
+      testResultsFiles: '**/*.trx'
+    displayName: Publish tests
 
-  #- script: docker build -t $(imageName) ./netcore-api-docker.Api
+  - task: PublishCodeCoverageResults@1
+    inputs:
+      summaryFileLocation: $(Build.SourcesDirectory)/coverage/cobertura-results.xml
+      reportDirectory: $(Build.SourcesDirectory)/results
+      codecoverageTool: cobertura
+    displayName: Publish coverage
+  
+  - script: docker build -t $(imageName) ./netcore-api-docker.Api
+    displayName: Build Image

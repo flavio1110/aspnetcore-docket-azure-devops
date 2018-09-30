@@ -3,5 +3,13 @@
 bin
 obj/
 publish/
+TestResults/
+coverage/
+results/
+.store/
 
 *.user
+*.info
+coverage.json
+coverage.cobertura.xml
+reportgenerator.exe
