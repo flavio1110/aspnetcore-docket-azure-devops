@@ -25,4 +25,11 @@ steps:
       dotnet tool install dotnet-reportgenerator-globaltool --version 4.0.0-rc6 --tool-path . 
       ./reportgenerator "-reports:$(Build.SourcesDirectory)/coverage/cobertura-results.xml" "-targetdir:$(Build.SourcesDirectory)/results" "-reporttypes:HTMLInline;HTMLChart"
     displayName: 'Tests'
+
+  - task: PublishCodeCoverageResults@1
+    inputs:
+      summaryFileLocation: $(Build.SourcesDirectory)/coverage/cobertura-results.xml
+      reportDirectory: $(Build.SourcesDirectory)/results
+      codecoverageTool: cobertura
+    displayName: Publish coverage
   #- script: docker build -t $(imageName) ./netcore-api-docker.Api
