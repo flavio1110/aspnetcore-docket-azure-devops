@@ -26,6 +26,12 @@ steps:
       ./reportgenerator "-reports:$(Build.SourcesDirectory)/coverage/cobertura-results.xml" "-targetdir:$(Build.SourcesDirectory)/results" "-reporttypes:HTMLInline;HTMLChart"
     displayName: 'Tests'
 
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: VSTest
+      testResultsFiles: '**/*.trx'
+    displayName: Publish tests
+
   - task: PublishCodeCoverageResults@1
     inputs:
       summaryFileLocation: $(Build.SourcesDirectory)/coverage/cobertura-results.xml
