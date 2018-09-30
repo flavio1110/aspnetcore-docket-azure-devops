@@ -14,16 +14,11 @@ steps:
       version: '2.1.402'
 
   - script: dotnet build --configuration $(buildConfiguration)
-
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: test
-      projects: '**/*Tests/*.csproj'
-      arguments: '--configuration $(buildConfiguration)'
+    displayName: 'dotnet build $(buildConfiguration) build# $(Build.BuildId)'
 
   - script: |
       mkdir $(Build.SourcesDirectory)\coverage
-      dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)\coverage\results.json netcore-api-docker.Api.UnitTests
-      dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:MergeWith=$(Build.SourcesDirectory)\coverage\results.json netcore-api-docker.Api.IntegrationTests
-
+      dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)\coverage\results.xml netcore-api-docker.Api.UnitTests
+      dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:MergeWith=$(Build.SourcesDirectory)\coverage\results.xml netcore-api-docker.Api.IntegrationTests
+    displayName: 'Tests'
   #- script: docker build -t $(imageName) ./netcore-api-docker.Api
