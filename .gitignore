@@ -3,6 +3,8 @@
 bin
 obj/
 publish/
+TestResults/
+coverage/
 
 *.user
 *.info
