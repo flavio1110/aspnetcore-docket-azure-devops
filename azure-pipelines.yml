@@ -38,4 +38,6 @@ steps:
       reportDirectory: $(Build.SourcesDirectory)/results
       codecoverageTool: cobertura
     displayName: Publish coverage
-  #- script: docker build -t $(imageName) ./netcore-api-docker.Api
+  
+  - script: docker build -t $(imageName) ./netcore-api-docker.Api
+    displayName: Build Image
