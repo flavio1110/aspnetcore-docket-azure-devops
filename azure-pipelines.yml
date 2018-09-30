@@ -19,7 +19,7 @@ steps:
 
   - script: |
       mkdir $(Build.SourcesDirectory)\coverage
-      dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)\coverage\results.xml netcore-api-docker.Api.UnitTests
-      dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:MergeWith=$(Build.SourcesDirectory)\coverage\results.xml netcore-api-docker.Api.IntegrationTests
+      dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)\coverage\ netcore-api-docker.Api.UnitTests
+      #dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:MergeWith=$(Build.SourcesDirectory)\coverage\coverage.cobertura.xml netcore-api-docker.Api.IntegrationTests
     displayName: 'Tests'
   #- script: docker build -t $(imageName) ./netcore-api-docker.Api
