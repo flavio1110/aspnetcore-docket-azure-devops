@@ -22,7 +22,7 @@ steps:
       mkdir $(Build.SourcesDirectory)\results
       dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutput=$(Build.SourcesDirectory)\coverage\results.json netcore-api-docker.Api.UnitTests
       dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:MergeWith=$(Build.SourcesDirectory)\coverage\results.json /p:CoverletOutput=$(Build.SourcesDirectory)\coverage\cobertura-results.xml netcore-api-docker.Api.IntegrationTests
-      dotnet tool --global install dotnet-reportgenerator-globaltool --version 4.0.0-rc6
+      dotnet tool install --global dotnet-reportgenerator-globaltool --version 4.0.0-rc6
       reportgenerator "-reports:.\coverage\cobertura-results.xml" "-targetdir:$(Build.SourcesDirectory)\results" "-reporttypes:HTMLInline;HTMLChart"
     displayName: 'Tests'
   #- script: docker build -t $(imageName) ./netcore-api-docker.Api
