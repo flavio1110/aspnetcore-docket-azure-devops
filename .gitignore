@@ -5,3 +5,5 @@ obj/
 publish/
 
 *.user
+*.info
+coverage.json

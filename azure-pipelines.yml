@@ -21,4 +21,6 @@ steps:
       projects: '**/*Tests/*.csproj'
       arguments: '--configuration $(buildConfiguration)'
 
+  - bash: ./build.sh
+
   #- script: docker build -t $(imageName) ./netcore-api-docker.Api
